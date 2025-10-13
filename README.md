@@ -17,20 +17,46 @@ El proyecto es una aplicación de consola en java para la gestión de una biblio
       -IntelliJ
       -Gson si quieres almacenar y leer los datos del archivo JSON.
 5-ESTRUCTURA DEL PROYECTO 
-<img width="559" height="606" alt="image" src="https://github.com/user-attachments/assets/55fca558-f394-4ebb-bbe0-90e52f74e633" />
+C:\Users\Formacion\IdeaProjects\Biblioteca\Biblioteca>tree /F /A
+Listado de rutas de carpetas para el volumen Windows
+El número de serie del volumen es 8449-04B3
+C:.
+|   .gitignore
+|   Biblioteca.iml
+|   Biblioteca.java
+|   Libro.java
+|   Main.java
+|   README.md
+|
++---.idea
+|   |   .gitignore
+|   |   misc.xml
+|   |   modules.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |
+|   \---libraries
+|           gson_2_11_0.xml
+|
++---out
+|   \---production
+|       \---Biblioteca
+|               Biblioteca$1.class
+|               Biblioteca.class
+|               Libro.class
+|               Main.class
+|
+\---src
+        Biblioteca.java
+        Libro.java
+        Main.java
 6-USO DEL PROYECTO
     1-Menú de opciones 
-      <img width="299" height="238" alt="image" src="https://github.com/user-attachments/assets/c471628f-7068-469c-841c-9e3829342d69" />
     2-Ejemplo de añadir el libro 
-      <img width="555" height="284" alt="image" src="https://github.com/user-attachments/assets/dbf44235-917e-4448-a8c6-313b38fd181e" />
     3-Ejemplo de listar libros
-       <img width="463" height="169" alt="image" src="https://github.com/user-attachments/assets/307540c9-246a-42b0-8f43-04ffe7ace5a4" />
     4-Ejemplo de buscar un libro por título
-      <img width="506" height="198" alt="image" src="https://github.com/user-attachments/assets/cb6df5e4-32ad-470b-b7e0-12d3b298713c" />
     5-Ejemplo de buscar un autor por nombre y que salgan todos sus libros
-      <img width="433" height="191" alt="image" src="https://github.com/user-attachments/assets/b295a0dc-bbbb-4583-bfa9-bdef6e454794" />
     6-Ejemplo de eliminar un libro por su isbn
-      <img width="1026" height="171" alt="image" src="https://github.com/user-attachments/assets/555af990-55f0-4223-a9b0-236e9c8adafb" />
 7-VALIDACIONES
   -Sólo se permiten libros publicados en 1850 o a partir de 1850.
   -Sólo se permite isbn con este formato 978-xx-xxxxx-xx-x
