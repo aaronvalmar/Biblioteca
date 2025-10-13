@@ -52,11 +52,17 @@ C:.
         Main.java
 6-USO DEL PROYECTO
     1-Menú de opciones 
+    Imagenes/menu.png
     2-Ejemplo de añadir el libro 
+    Imagenes/anadirLibro.png
     3-Ejemplo de listar libros
+    Imagenes/listarLibro.png
     4-Ejemplo de buscar un libro por título
+    Imagenes/buscarLibro.png
     5-Ejemplo de buscar un autor por nombre y que salgan todos sus libros
+    Imagenes/buscarAutor.png
     6-Ejemplo de eliminar un libro por su isbn
+    Imagenes/salir.png
 7-VALIDACIONES
   -Sólo se permiten libros publicados en 1850 o a partir de 1850.
   -Sólo se permite isbn con este formato 978-xx-xxxxx-xx-x
