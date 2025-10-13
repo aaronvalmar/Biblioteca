@@ -1,15 +1,7 @@
 1-NOMBRE DEL PROYECTO 
   Biblioteca virtual-Gestión de una biblioteca en java
 2-BREVE EXPLICACIÓN DEL PROYECTO
-El proyecto es una aplicación de consola en java para la gestión de una biblioteca. Permite añadir libros, listar libros,buscar libros por título, buscar autor por nombre y eliminar libros:
-      -Añadir libros con título,autor,isbn y año de publicación.
-      -Valida que el formato de isbn sea correcto y no esté repetido.
-      -Valida que el año de publicación del libro sea del 1850 en adelante
-      -Listar los libros de la biblioteca.
-      -Buscar libros por título.
-      -Buscar autor por nombre y muestra todos los libros asociados a ese autor.
-      -Uso de scanner para interactuar con el usuario mediante consola y captar los datos introducidos por el usuario.
-      -Uso de la librería Gson para guardar y cargar los datos en un JSON.
+El proyecto es una aplicación de consola en java para la gestión de una biblioteca. Permite añadir libros, listar libros,buscar libros por título, buscar autor por nombre y eliminar libros.
   3-DETALLES DE LA APLICACIÓN
     El proyecto permite:
       -Añadir libros con título,autor,isbn y año de publicación.
