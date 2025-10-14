@@ -44,11 +44,11 @@ public class Main {
                     String titulo = scanner.nextLine();
 
                     //Valida el formato del ISBN
-                    System.out.println("ISBN formato xxx-xx-xxxxx-xx-x:");
+                    System.out.println("ISBN formato 978/979-xx-xxxxx-xx-x:");
                     String isbn = scanner.nextLine();
                     while (!Biblioteca.isbnValido(isbn) || biblioteca.isbnExistente(isbn)) {
                         if (!Biblioteca.isbnValido(isbn)) {
-                            System.out.println("ISBN inválido.Debe de tener el siguiente formato 978-xx-xxxxx-xx-x.Escríbalo con los números necesarios, porfavor");
+                            System.out.println("ISBN inválido.Debe de tener el siguiente formato 978/979-xx-xxxxx-xx-x.Escríbalo con los números necesarios, porfavor");
                         } else if (biblioteca.isbnExistente(isbn)) {
                             System.out.println("Ya existe un libro con ese isbn. Escriba otro diferente porfavor");
                         }

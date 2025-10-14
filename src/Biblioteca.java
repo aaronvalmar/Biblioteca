@@ -183,7 +183,7 @@ public class Biblioteca {
      * @return  true si el ISBN es válido y false si no cumple con el formato
      */
     public static boolean isbnValido(String isbn) {
-        String patronIsbn="\\d{3}-\\d{2}-\\d{5}-\\d{2}-\\d";
+        String patronIsbn="97[89]-\\d{2}-\\d{5}-\\d{2}-\\d";
         return isbn.matches(patronIsbn);
     }
 
