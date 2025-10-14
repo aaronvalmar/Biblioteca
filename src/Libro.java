@@ -22,7 +22,7 @@ public class Libro {
         this.nombreAutor = nombreAutor;
         this.anoLibro=anoLibro;
         if(!Biblioteca.isbnValido(isbn)){
-            throw new IllegalArgumentException("ISBN inválido.Debe de tener el siguiente formato 978-xx-xxxxx-xx-x");
+            throw new IllegalArgumentException("ISBN inválido.Debe de tener el siguiente formato xxx-xx-xxxxx-xx-x");
         }
         this.isbn=isbn;
     }

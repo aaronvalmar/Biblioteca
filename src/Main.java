@@ -62,10 +62,13 @@ public class Main {
                         String entrada = scanner.nextLine();
                         try {
                             anio = Integer.parseInt(entrada);
-                            if (anio >= 1850) {
+                            if (anio < 1850 ) {
+                                System.out.println("El año debe de ser mayor  o igual que 1850");
+                            } else if(anio > 2025 ){
+                                System.out.println("El año debe de ser menor o igual que 2025");
+                            }
+                            else {
                                 valido = true;
-                            } else {
-                                System.out.println("El año debe de ser mayor que 1850");
                             }
 
                         } catch (NumberFormatException e) {
