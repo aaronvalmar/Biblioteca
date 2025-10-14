@@ -37,7 +37,7 @@ public class Main {
                     String titulo = scanner.nextLine();
 
                     //Valida el formato del ISBN
-                    System.out.println("ISBN formato 978-xx-xxxxx-xx-x:");
+                    System.out.println("ISBN formato xxx-xx-xxxxx-xx-x:");
                     String isbn = scanner.nextLine();
                     while(!Biblioteca.isbnValido(isbn) || biblioteca.isbnExistente(isbn)){
                         if(!Biblioteca.isbnValido(isbn)){
