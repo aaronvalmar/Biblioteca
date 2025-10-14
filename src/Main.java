@@ -46,14 +46,20 @@ public class Main {
                     //Valida el formato del ISBN
                     System.out.println("ISBN formato 978/979-xx-xxxxx-xx-x:");
                     String isbn = scanner.nextLine();
-                    while (!Biblioteca.isbnValido(isbn) || biblioteca.isbnExistente(isbn)) {
-                        if (!Biblioteca.isbnValido(isbn)) {
-                            System.out.println("ISBN inválido.Debe de tener el siguiente formato 978/979-xx-xxxxx-xx-x.Escríbalo con los números necesarios, porfavor");
-                        } else if (biblioteca.isbnExistente(isbn)) {
-                            System.out.println("Ya existe un libro con ese isbn. Escriba otro diferente porfavor");
-                        }
+                    while (!Biblioteca.isbnValido(isbn)) {
+                        System.out.println("ISBN inválido. Debe tener el formato 978/979-xx-xxxxx-xx-x. Escríbalo correctamente, por favor");
                         isbn = scanner.nextLine();
                     }
+                    boolean agregarDuplicado = true;
+                    for(Libro libroExistente : biblioteca.getCatalogo()){
+                        if(libroExistente.getIsbn().equalsIgnoreCase(isbn)){
+                            if(!libroExistente.getTitulo().equalsIgnoreCase(titulo) || !libroExistente.getNombreAutor().equalsIgnoreCase(autor)){
+                                System.out.println("Ya existe ese ISBN pero con diferente título o autor");
+                            }
+                        }
+                    }
+
+
                     //Valida el año de publicación, sólo permite libros publicados de 1850 en adelante
                     int anio = 0;
                     boolean valido = false;

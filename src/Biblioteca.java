@@ -35,7 +35,9 @@ public class Biblioteca {
             guardarCatalogo();
         }));
     }
-
+    public List<Libro> getCatalogo(){
+        return new ArrayList<>(catalogo);
+    }
     /**
      * Guarda el catálogo de libros en formato JSON en el archivo indicado
      * Si el archivo no existe o hay un error,crea una lista vacía
