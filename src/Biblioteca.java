@@ -1,7 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -30,7 +29,11 @@ public class Biblioteca {
     public Biblioteca() {
         catalogo = new ArrayList<>();
         cargarCatalogo();
-
+        //Guarda el libro añadido aunque se fuerce la salida
+        Runtime.getRuntime().addShutdownHook(new Thread(()->{
+            System.out.println(" Catálogo guardado antes de salir");
+            guardarCatalogo();
+        }));
     }
 
     /**
