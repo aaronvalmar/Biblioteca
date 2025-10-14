@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
         Scanner scanner = new Scanner(System.in);
-        int opcion;
+        int opcion=0;
 
 //Bucle principal que se repita hasta que el usuario elija salir
         do {
@@ -14,15 +14,22 @@ public class Main {
             final String verde = "\u001B[32m";
             final String cian = "\u001B[36m";
             final String rojo = "\u001B[31m";
-            final String resetearColor="\u001B[0m";
+            final String resetearColor = "\u001B[0m";
             //Menú de opciones
             System.out.println(resetearColor + "Seleccione una opción:");
-            System.out.println( verde + "1. Añadir libro" + resetearColor);
+            System.out.println(verde + "1. Añadir libro" + resetearColor);
             System.out.println(azul + "2. Listar libros" + resetearColor);
-            System.out.println(amarillo + "3. Buscar libro por título"  + resetearColor);
-            System.out.println(cian + "4. Buscar autor"  + resetearColor);
-            System.out.println("5. Eliminar libro por isbn"  + resetearColor);
-            System.out.println(rojo +"6. Salir");
+            System.out.println(amarillo + "3. Buscar libro por título" + resetearColor);
+            System.out.println(cian + "4. Buscar autor" + resetearColor);
+            System.out.println("5. Eliminar libro por isbn" + resetearColor);
+            System.out.println(rojo + "6. Salir");
+            // Verifica si lo que escribe el usuario es un número
+            if (!scanner.hasNextInt()) {
+                System.out.println("Opción no válida. Debe ingresar un número del 1 al 6.");
+                scanner.nextLine();
+                continue;
+            }
+
             opcion = scanner.nextInt();
             scanner.nextLine();
 
@@ -39,33 +46,33 @@ public class Main {
                     //Valida el formato del ISBN
                     System.out.println("ISBN formato xxx-xx-xxxxx-xx-x:");
                     String isbn = scanner.nextLine();
-                    while(!Biblioteca.isbnValido(isbn) || biblioteca.isbnExistente(isbn)){
-                        if(!Biblioteca.isbnValido(isbn)){
-                        System.out.println("ISBN inválido.Debe de tener el siguiente formato 978-xx-xxxxx-xx-x.Escríbalo con los números necesarios, porfavor");
-                    }else if(biblioteca.isbnExistente(isbn)){
+                    while (!Biblioteca.isbnValido(isbn) || biblioteca.isbnExistente(isbn)) {
+                        if (!Biblioteca.isbnValido(isbn)) {
+                            System.out.println("ISBN inválido.Debe de tener el siguiente formato 978-xx-xxxxx-xx-x.Escríbalo con los números necesarios, porfavor");
+                        } else if (biblioteca.isbnExistente(isbn)) {
                             System.out.println("Ya existe un libro con ese isbn. Escriba otro diferente porfavor");
                         }
-                        isbn= scanner.nextLine();
+                        isbn = scanner.nextLine();
                     }
                     //Valida el año de publicación, sólo permite libros publicados de 1850 en adelante
-                    int anio=0;
-                    boolean valido=false;
-                    do{
-                         System.out.println("Año de publicación:");
-                         String entrada=scanner.nextLine();
-                    try{
-                         anio = Integer.parseInt(entrada);
+                    int anio = 0;
+                    boolean valido = false;
+                    do {
+                        System.out.println("Año de publicación:");
+                        String entrada = scanner.nextLine();
+                        try {
+                            anio = Integer.parseInt(entrada);
                             if (anio >= 1850) {
                                 valido = true;
                             } else {
                                 System.out.println("El año debe de ser mayor que 1850");
                             }
 
-                        }catch(NumberFormatException e){
+                        } catch (NumberFormatException e) {
                             System.out.println("Ingresa un número válido porfavor");
                         }
-                    }while(!valido);
-                    biblioteca.anadirLibro(new Libro(titulo,autor, isbn, anio));
+                    } while (!valido);
+                    biblioteca.anadirLibro(new Libro(titulo, autor, isbn, anio));
                     break;
 
                 case 2:
@@ -99,6 +106,7 @@ public class Main {
                     System.out.println("Opción no válida");
 
             }
+
         } while (opcion != 6);//el menú se repite hasta que el usuario elija salir
         scanner.close();
 
