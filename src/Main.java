@@ -81,7 +81,26 @@ public class Main {
                             System.out.println("Ingresa un número válido porfavor");
                         }
                     } while (!valido);
-                    biblioteca.anadirLibro(new Libro(titulo, autor, isbn, anio));
+                    int cantidadLibros= 0;
+                    boolean cantidadIntroducida=false;
+                    do{
+                        System.out.println("¿Cuántos libros quieres añadir con estos datos?");
+                        String entrada = scanner.nextLine();
+                        try{
+                            cantidadLibros = Integer.parseInt(entrada);
+                            if(cantidadLibros <=0){
+                                System.out.println("Ingrese un número mayor que 0");
+                            }else{
+                                cantidadIntroducida=true;
+                            }
+                        }catch (NumberFormatException e){
+                            System.out.println("Ingresa un número válido por favor");
+                        }
+                    }while(!cantidadIntroducida);
+                    for(int i = 0;i <cantidadLibros;i++) {
+                        biblioteca.anadirLibro(new Libro(titulo, autor, isbn, anio));
+                    }
+                    System.out.println("Se añadió " + cantidadLibros + "libro(s)");
                     break;
 
                 case 2:
@@ -104,7 +123,51 @@ public class Main {
                     //Eliminar libro por ISBN
                     System.out.println("Ingresa el isbn del libro que quieres eliminar");
                     String isbnEliminar = scanner.nextLine();
-                    biblioteca.eliminarLibro(isbnEliminar);
+                    //Valida el formato
+                    while(!Biblioteca.isbnValido(isbnEliminar)){
+                        System.out.println("ISBN inválido. Debe tener el formato 978/979-xx-xxxxx-xx-x. Escríbalo correctamente, por favor");
+                        isbn = scanner.nextLine();
+                    }
+                    int cantidadExistenteLibro=0;
+                    for(Libro libro: biblioteca.getCatalogo()){
+                        if(libro.getIsbn().equalsIgnoreCase(isbnEliminar)){
+                            cantidadExistenteLibro++;
+                        }
+                    }
+                    if (cantidadExistenteLibro == 0){
+                        System.out.println("No hay ningún libro con el ISBN especificado");
+                        break;
+                    }
+                    System.out.println("Se encontraron " + cantidadExistenteLibro + "libro(s) con el ISBN especificado");
+                    int cantidadLibrosEliminar= 1;
+                    if(cantidadExistenteLibro > 1) {
+                        boolean cantidadValida = false;
+
+                        do {
+                            System.out.println("¿Cuántos libros deseas eliminar?");
+                            String entradaEliminarLibros = scanner.nextLine();
+                            try {
+                                cantidadLibrosEliminar = Integer.parseInt(entradaEliminarLibros);
+                                if (cantidadLibrosEliminar <= cantidadExistenteLibro && cantidadLibrosEliminar > 0) {
+                                    cantidadValida = true;
+                                } else {
+                                    System.out.println("Debes introducir un número entre 1 y " + cantidadExistenteLibro);
+                                }
+
+                            } catch (NumberFormatException e) {
+                                System.out.println("Por favor,introduce un número válido");
+                            }
+                        } while (!cantidadValida);
+                    }
+                    int eliminado=0;
+                    for(int i =0;i < biblioteca.getCatalogo().size() && eliminado < cantidadLibrosEliminar;i++){
+                        Libro libro= biblioteca.getCatalogo().get(i);
+                        if(libro.getIsbn().equalsIgnoreCase(isbnEliminar)){
+                            biblioteca.getCatalogo().remove(i);
+                            eliminado++;
+                        }
+                    }
+                    System.out.println("Se eliminaron " + eliminado + " libro(s) con el ISBN " + isbnEliminar);
                     break;
                 case 6:
                     biblioteca.guardarCatalogo();
