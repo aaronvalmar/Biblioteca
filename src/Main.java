@@ -126,7 +126,7 @@ public class Main {
                     //Valida el formato
                     while(!Biblioteca.isbnValido(isbnEliminar)){
                         System.out.println("ISBN inválido. Debe tener el formato 978/979-xx-xxxxx-xx-x. Escríbalo correctamente, por favor");
-                        isbn = scanner.nextLine();
+                        isbnEliminar = scanner.nextLine();
                     }
                     int cantidadExistenteLibro=0;
                     for(Libro libro: biblioteca.getCatalogo()){
@@ -160,7 +160,7 @@ public class Main {
                         } while (!cantidadValida);
                     }
                     int eliminado=0;
-                    for(int i =0;i < biblioteca.getCatalogo().size() && eliminado < cantidadLibrosEliminar;i++){
+                    for(int i =0;i < biblioteca.getCatalogo().size() -1 && eliminado < cantidadLibrosEliminar;i++){
                         Libro libro= biblioteca.getCatalogo().get(i);
                         if(libro.getIsbn().equalsIgnoreCase(isbnEliminar)){
                             biblioteca.getCatalogo().remove(i);
@@ -168,6 +168,7 @@ public class Main {
                         }
                     }
                     System.out.println("Se eliminaron " + eliminado + " libro(s) con el ISBN " + isbnEliminar);
+                    biblioteca.guardarCatalogo();
                     break;
                 case 6:
                     biblioteca.guardarCatalogo();
